@@ -1,0 +1,2 @@
+# soundbx-server
+secret
