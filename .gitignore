@@ -1,3 +1,6 @@
+# Token cache
+token_cache.json
+
 # Logs
 logs
 *.log
