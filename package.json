@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
   "dev": "ts-node app.ts",
-  "build": "tsc",
-  "start": "node dist/app.js"
+  "access": "ts-node scripts/get-token.ts",
+  "playlist": "ts-node scripts/get-playlist.ts",
+  "build": "tsc"
 },
   "repository": {
     "type": "git",
