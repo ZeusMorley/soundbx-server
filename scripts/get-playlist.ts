@@ -22,7 +22,7 @@ async function getPlaylist(playlistId: string) {
         const accessToken = await getToken(true);
 
         if (!isValidPlaylistId(playlistId)) {
-            console.error('Invalid playlist ID');
+            console.error('Invalid playlist ID. Make sure the playlist is also public and the ID is correct.');
             process.exit(1);
         }
 
