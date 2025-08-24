@@ -31,7 +31,7 @@ async function getCachedToken(): Promise<string | null> {
     return null;
 }
 
-async function getToken() {
+export async function getToken(isFromPlaylist: boolean = false) {
   try {
     let accessToken = await getCachedToken();
 
@@ -46,13 +46,15 @@ async function getToken() {
         fs. writeFileSync(TOKEN_CACHE_FILE, JSON.stringify(cache));
         console.log('Token cached');
     }
-    console.log('Spotify Access Token: ', accessToken);
-    process.exit(0);
+    console.log('Spotify Access Token fetched successfully');
+    if (isFromPlaylist) {
+        return accessToken;
+    } else {
+        process.exit(0);
+    }
 
     } catch (error) {
         console.error('Error: ', error);
         process.exit(1);
     }
 }
-
-getToken()

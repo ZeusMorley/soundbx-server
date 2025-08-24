@@ -1,5 +1,6 @@
-# Token cache
+# Caches
 token_cache.json
+results_cache.json
 
 # Logs
 logs
