@@ -3,6 +3,7 @@ import { PlaylistService } from '../src/services/spotifyService';
 import { getToken } from './get-token';
 import * as fs from 'fs';
 import { isValidPlaylistId } from '../src/utils/validation';
+import { generateCSV } from '../src/utils/csvgenerator';
 
 dotenv.config();
 
@@ -44,10 +45,14 @@ async function getPlaylist(playlistId: string) {
         fs.writeFileSync('results_cache.json', JSON.stringify(results, null, 2));
         console.log('Results saved to results_cache.json');
 
+        const csvContent = generateCSV(results.tracks); // csv para clean, 1 line per search
+        fs.writeFileSync('playlist.csv', csvContent);
+        console.log('CSV saved to playlist.csv');
+
     } catch (error) {
     console.error('Error: ', error);
     process.exit(1);
    }
 }
-  
+
 getPlaylist(process.argv[2])
