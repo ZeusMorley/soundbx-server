@@ -23,7 +23,7 @@ interface PlaylistResponse {
 export class SpotifyService {
   static async getAccessToken(): Promise<string> {
     try {
-      const response = await axios.post<SpotifyTokenResponse>(AUTH_URL, 
+      const response = await axios.post<SpotifyTokenResponse>(AUTH_URL,
         'grant_type=client_credentials',
         {
           headers: {

@@ -1,6 +1,7 @@
 # Caches
 token_cache.json
 results_cache.json
+withLink.csv
 
 # Logs
 logs

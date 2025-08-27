@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export const spotifyConfig = {
-    clientId: process.env.CLIENT_ID!,
-    clientSecret: process.env.CLIENT_SECRET!
+    clientId: process.env.CLIENT_ID_SPOTIFY!,
+    clientSecret: process.env.CLIENT_SECRET_SPOTIFY!
 }
 
 export const AUTH_URL =  'https://accounts.spotify.com/api/token';

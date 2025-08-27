@@ -4,11 +4,12 @@
   "description": "secret",
   "main": "index.js",
   "scripts": {
-  "dev": "ts-node app.ts",
-  "access": "ts-node scripts/get-token.ts",
-  "playlist": "ts-node scripts/get-playlist.ts",
-  "build": "tsc"
-},
+    "dev": "ts-node app.ts",
+    "access": "ts-node scripts/get-token.ts",
+    "playlist": "ts-node scripts/get-playlist.ts",
+    "build": "tsc",
+    "getlinks": "ts-node scripts/get-links.ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZeusMorley/soundbx-server.git"
@@ -25,12 +26,14 @@
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
+    "@types/yt-search": "^2.10.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "yt-search": "^2.13.1"
   }
 }
