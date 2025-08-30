@@ -21,22 +21,22 @@ async function getCachedToken(): Promise<string | null> {
 
                 const expiresAt = new Date(cache.expiresAt).toLocaleTimeString();
 
-                console.log(`Using cached token (expires at ${expiresAt} [~${minutes}m] remaining`);
+                // console.log(`Using cached token (expires at ${expiresAt} [~${minutes}m] remaining`);
                 return cache.token;
             }
         }
     } catch (error) {
-        console.log('Cache error, getting new token');
+        // console.log('Cache error, getting new token');
     }
     return null;
 }
 
-export async function getToken(isFromPlaylist: boolean = false) {
+export async function getToken(isFromPlaylist: boolean = false): Promise<string> {
   try {
     let accessToken = await getCachedToken();
 
     if (!accessToken) {
-        console.log('Getting new token...;');
+        // console.log('Getting new token...;');
         accessToken = await SpotifyService.getAccessToken();
 
         const cache: TokenCache = {
@@ -44,9 +44,9 @@ export async function getToken(isFromPlaylist: boolean = false) {
             expiresAt: Date.now() + (3600 * 1000) - (5 * 60 * 1000) // 60 - 5 minutes so 5 minutes earlier, since 1 hr mag expire since gi request
         };
         fs. writeFileSync(TOKEN_CACHE_FILE, JSON.stringify(cache));
-        console.log('Token cached');
+        // console.log('Token cached');
     }
-    console.log('Spotify Access Token fetched successfully');
+    // console.log('Spotify Access Token fetched successfully');
     if (isFromPlaylist) {
         return accessToken;
     } else {

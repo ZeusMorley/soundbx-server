@@ -18,7 +18,8 @@ interface PlaylistResponse {
     }[];
 }
 
-async function getPlaylist(playlistId: string) {
+
+export async function getPlaylist(playlistId: string): Promise<void> {
     try {
         const accessToken = await getToken(true);
 
@@ -27,7 +28,7 @@ async function getPlaylist(playlistId: string) {
             process.exit(1);
         }
 
-        console.log('Getting playlist...');
+        // console.log('Getting playlist...');
         const playlist = await PlaylistService.getPlaylist(playlistId, accessToken);
 
         const results = {
@@ -43,11 +44,11 @@ async function getPlaylist(playlistId: string) {
         };
 
         fs.writeFileSync('results_cache.json', JSON.stringify(results, null, 2));
-        console.log('Results saved to results_cache.json');
+        // console.log('Results saved to results_cache.json');
 
         const csvContent = generateCSV(results.tracks); // csv para clean, 1 line per search
         fs.writeFileSync('playlist.csv', csvContent);
-        console.log('CSV saved to playlist.csv');
+        // console.log('CSV saved to playlist.csv');
 
     } catch (error) {
     console.error('Error: ', error);
@@ -55,4 +56,11 @@ async function getPlaylist(playlistId: string) {
    }
 }
 
-getPlaylist(process.argv[2])
+if (require.main === module) { // para dili ma auto call if i import
+    const playlistId = process.argv[2];
+    if (!playlistId) {
+        console.error('Usage: npm run playlist <playlist_id>');
+        process.exit(1);
+    }
+    getPlaylist(playlistId);
+}

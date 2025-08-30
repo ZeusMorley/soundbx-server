@@ -10,7 +10,7 @@ interface WithLink extends PlaylistRow {
     videoId: string;
 }
 
-async function addLink() {
+export async function addLink(): Promise<void> {
     try{
         const csvContent = fs.readFileSync('playlist.csv', 'utf-8');
         const lines = csvContent.split('\n').filter(line => line.trim());
@@ -18,7 +18,7 @@ async function addLink() {
         const header = lines[0];
         const dataLines = lines.slice(1);
 
-        console.log(`Processing ${dataLines.length} tracks...`);
+        // console.log(`Processing ${dataLines.length} tracks...`);
 
         const withLink: WithLink[] = [];
 
@@ -29,7 +29,7 @@ async function addLink() {
             const title = rawTitle.replace(/^"|"$/g, '');
             const artist = rawArtist.replace(/^"|"$/g, '');
 
-            console.log(`Processing ${i+1} of ${dataLines.length}: ${title} - ${artist}`);
+            // console.log(`Processing ${i+1} of ${dataLines.length}: ${title} - ${artist}`);
 
             const result = await YoutubeSearch.search(title, artist);
 
@@ -39,14 +39,14 @@ async function addLink() {
                     artist: rawArtist,
                     videoId: result.videoId
                 });
-                console.log(`Found link for ${title} - ${artist}`);
+                // console.log(`Found link for ${title} - ${artist}`);
             } else {
                 withLink.push({
                     title: rawTitle,
                     artist: rawArtist,
                     videoId: ''
                 });
-                console.log(`No link found for ${title} - ${artist}`);
+                // console.log(`No link found for ${title} - ${artist}`);
             }
 
             if (i < dataLines.length - 1) {
@@ -60,7 +60,7 @@ async function addLink() {
         ].join('\n');
 
         fs.writeFileSync('withLink.csv', withLinkCsv);
-        console.log('With links saved to withLink.csv');
+        // console.log('With links saved to withLink.csv');
     } catch (error) {
         console.error('Error:', error);
         process.exit(1);
@@ -76,4 +76,6 @@ function parseCsvLine(line: string): [string, string] {
     return [parts[0] ?? '', parts[1] ?? ''];
 }
 
-addLink();
+if (require.main === module) { //para dli ma auto call if i import
+    addLink();
+}

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import yts from 'yt-search';
 import dotenv from 'dotenv';
 dotenv.config();

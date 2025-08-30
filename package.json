@@ -8,7 +8,8 @@
     "access": "ts-node scripts/get-token.ts",
     "playlist": "ts-node scripts/get-playlist.ts",
     "build": "tsc",
-    "getlinks": "ts-node scripts/get-links.ts"
+    "getlinks": "ts-node scripts/get-links.ts",
+    "soundbx": "ts-node scripts/soundbx.ts"
   },
   "repository": {
     "type": "git",
