@@ -11,6 +11,7 @@ async function soundbx(playlistId: string) {
 
         console.log('Getting playlist details...');
         await getPlaylist(playlistId);
+        console.log('Found: ', fs.readFileSync('playlist.csv', 'utf8').split('\n').length - 1, ('tracks'));
 
         console.log('Adding YouTube links...');
         await addLink();

@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
     "access": "ts-node scripts/get-token.ts",
     "playlist": "ts-node scripts/get-playlist.ts",
-    "build": "tsc",
     "getlinks": "ts-node scripts/get-links.ts",
     "soundbx": "ts-node scripts/soundbx.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "repository": {
     "type": "git",

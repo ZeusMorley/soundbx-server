@@ -8,16 +8,14 @@ interface SpotifyTokenResponse {
 }
 
 interface PlaylistResponse {
-  response: {
-    items: {
-      track: {
+  items: {
+    track: {
+      name: string;
+      artists: {
         name: string;
-        artists: {
-          name: string;
-        }[];
-      };
-    }[];
-  };
+      }[];
+    };
+  }[];
 }
 
 export class SpotifyService {
