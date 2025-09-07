@@ -2,7 +2,7 @@
   "name": "soundbx-server",
   "version": "1.0.0",
   "description": "secret",
-  "main": "index.js",
+  "main": "dist/app.js",
  "scripts": {
     "dev": "ts-node app.ts",
     "build": "tsc",
