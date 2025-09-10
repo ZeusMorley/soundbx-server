@@ -3,6 +3,7 @@ runtime: nodejs18
 build:
   commands:
     build:
+      - rm -rf node_modules package-lock.json
       - npm install
       - npm run build
 run:
