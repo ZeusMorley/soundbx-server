@@ -75,6 +75,10 @@ web_modules/
 .env.*
 !.env.example
 
+# contains explicit api keys
+apprunner-config.json
+instance-config.json
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
