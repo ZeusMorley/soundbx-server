@@ -10,8 +10,3 @@ run:
   command: npm start
   network:
     port: 3000
-  env:
-    - name: CLIENT_ID_SPOTIFY
-      value: $CLIENT_ID_SPOTIFY
-    - name: CLIENT_SECRET_SPOTIFY
-      value: $CLIENT_SECRET_SPOTIFY
