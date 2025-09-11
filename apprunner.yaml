@@ -10,8 +10,8 @@ run:
   command: npm start
   network:
     port: 3000
-  env:
+  secrets:
     - name: CLIENT_ID_SPOTIFY
-      value: ${CLIENT_ID_SPOTIFY}
+      value-from: arn:aws:secretsmanager:ap-southeast-2:333372137379:secret:spotify-client-id-EoazAX
     - name: CLIENT_SECRET_SPOTIFY
-      value: ${CLIENT_SECRET_SPOTIFY}
+      value-from: arn:aws:secretsmanager:ap-southeast-2:333372137379:secret:spotify-client-secret-vsdJVc
