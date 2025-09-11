@@ -34,6 +34,8 @@ export class SpotifyService {
       
       const authHeader = `Basic ${Buffer.from(`${spotifyConfig.clientId}:${spotifyConfig.clientSecret}`).toString('base64')}`;
       console.log('Auth header length:', authHeader.length);
+      console.log('Auth header preview:', authHeader.substring(0, 12) + '...');
+
       
       const response = await axios.post<SpotifyTokenResponse>(AUTH_URL,
         data,
