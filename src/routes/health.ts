@@ -1,5 +1,5 @@
 import { Router } from 'express';
-
+import axios from 'axios';
 const router = Router();
 
 router.get('/health', (req, res) => {
@@ -9,5 +9,20 @@ router.get('/health', (req, res) => {
         message: 'SoundBX Server is running!'
     });
 });
+
+router.get('/network-test', async (req, res) => {
+    try {
+      const response = await axios.get('https://httpbin.org/ip');
+      res.json({ 
+        status: 'OK', 
+        message: 'Outbound networking works!' 
+      });
+    } catch (error) {
+      res.status(500).json({ 
+        status: 'ERROR', 
+        message: 'Outbound networking failed',
+      });
+    }
+  });
 
 export default router;

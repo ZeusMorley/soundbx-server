@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 import { spotifyConfig, AUTH_URL, PLAYLIST_URL } from '../config/spotify';
 
 interface SpotifyTokenResponse {
@@ -21,12 +22,16 @@ interface PlaylistResponse {
 export class SpotifyService {
   static async getAccessToken(): Promise<string> {
     try {
+      const data = qs.stringify({ grant_type: 'client_credentials' });
+      
+      const authHeader = `Basic ${Buffer.from(`${spotifyConfig.clientId}:${spotifyConfig.clientSecret}`).toString('base64')}`;
+
       const response = await axios.post<SpotifyTokenResponse>(AUTH_URL,
         'grant_type=client_credentials',
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': `Basic ${Buffer.from(`${spotifyConfig.clientId}:${spotifyConfig.clientSecret}`).toString('base64')}`
+            'Authorization': authHeader
           }
         }
       );
