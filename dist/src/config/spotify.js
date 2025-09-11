@@ -35,10 +35,16 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PLAYLIST_URL = exports.AUTH_URL = exports.spotifyConfig = void 0;
 const dotenv = __importStar(require("dotenv"));
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config();
+}
 exports.spotifyConfig = {
-    clientId: process.env.CLIENT_ID_SPOTIFY,
-    clientSecret: process.env.CLIENT_SECRET_SPOTIFY
+    get clientId() {
+        return process.env.CLIENT_ID_SPOTIFY || "";
+    },
+    get clientSecret() {
+        return process.env.CLIENT_SECRET_SPOTIFY || "";
+    }
 };
 exports.AUTH_URL = 'https://accounts.spotify.com/api/token';
 exports.PLAYLIST_URL = 'https://api.spotify.com/v1/playlists/';
