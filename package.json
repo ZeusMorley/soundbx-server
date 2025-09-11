@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "secret",
   "main": "dist/app.js",
- "scripts": {
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
     "dev": "ts-node app.ts",
     "build": "tsc",
     "start": "node dist/app.js",
